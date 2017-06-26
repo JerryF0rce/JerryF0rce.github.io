@@ -1,0 +1,207 @@
+* {
+  font-family: 'Aleo-Regular', sans-serif;
+  font-size: 16px; }
+
+.navbar {
+  min-height: 110px;
+  margin: 0;
+  display: flex;
+  align-items: center; }
+
+.logoText {
+  font-family: 'WCNegra', sans-serif;
+  font-size: 40px;
+  color: #000;
+  position: relative;
+  letter-spacing: -2px; }
+  .logoText .reddot {
+    position: absolute;
+    right: -10px;
+    top: 20px;
+    color: #ff3333;
+    font-size: 40px;
+    font-family: 'WCNegra', sans-serif;
+    letter-spacing: -3px; }
+
+.container-fluid {
+  padding: 0px; }
+
+.icon-bar {
+  background: #333; }
+
+.nav {
+  text-align: center; }
+  .nav li a {
+    font-size: 14px;
+    color: #333; }
+
+.billboard {
+  height: 570px;
+  position: relative;
+  text-align: center;
+  color: #fff; }
+  .billboard .wrapper {
+    position: relative;
+    background-image: url("../images/banner.png");
+    max-height: 570px;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    border-bottom: 4px solid #ff3333; }
+    .billboard .wrapper .flex-container {
+      height: 100%;
+      display: flex;
+      align-items: center; }
+      .billboard .wrapper .flex-container .billboard_text1 {
+        font-family: 'WCNegra', sans-serif;
+        font-size: 100px;
+        margin: 0 auto; }
+      .billboard .wrapper .flex-container .text2_container {
+        display: flex;
+        justify-content: center; }
+        .billboard .wrapper .flex-container .text2_container .line_before {
+          height: 13px;
+          width: 100%;
+          max-width: 40px;
+          border-bottom: 1px solid #ccc; }
+        .billboard .wrapper .flex-container .text2_container .line_after {
+          height: 13px;
+          width: 100%;
+          max-width: 40px;
+          border-bottom: 1px solid #ccc; }
+        .billboard .wrapper .flex-container .text2_container .billboard_text2 {
+          padding: 0 20px; }
+
+.bmenu_wrap {
+  text-align: center;
+  margin-bottom: 200px; }
+
+.menu {
+  margin-bottom: 200px; }
+  .menu .btn_wrap {
+    margin: auto;
+    margin-top: 90px; }
+    .menu .btn_wrap .btn {
+      width: 135px;
+      height: 30px;
+      border-radius: 0px;
+      font-size: 14px;
+      color: #ccc;
+      border: 1px solid #ccc;
+      background: #fff;
+      text-align: center;
+      padding: 0; }
+  .menu .ingredients {
+    font-family: 'Aleo-LightItalic', sans-serif;
+    font-size: 12px;
+    margin-bottom: 60px;
+    margin-top: 5px; }
+
+.menu > .btn_wrap {
+  text-align: center; }
+
+.none {
+  margin-top: 50px;
+  display: none; }
+
+.price {
+  float: right;
+  font-family: 'Aleo-Light', sans-serif;
+  color: #666; }
+
+.text {
+  font-family: 'Aleo-Light', sans-serif;
+  color: #666;
+  margin-top: 30px;
+  margin-bottom: 10px; }
+
+.featured_dishes {
+  margin-bottom: 200px; }
+
+.textline_wrapper2 span {
+  display: block;
+  margin-left: 300px;
+  padding-left: 20px;
+  background: #fff; }
+
+.rateyo {
+  margin-left: -05px; }
+
+.owl-dots {
+  position: absolute;
+  right: 0;
+  top: -80px; }
+
+.textline_wrapper2 {
+  height: 13px;
+  text-align: left;
+  border-bottom: 1px solid #ccc; }
+
+.textline_wrapper {
+  width: 100%;
+  max-width: 378px;
+  height: 18px;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  margin-bottom: 80px; }
+
+.featured,
+.gallery {
+  font-family: 'Aleo-Bold', sans-serif;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: #333;
+  background-color: #fff;
+  padding-right: 20px; }
+
+.the_gallery {
+  margin-bottom: 200px; }
+  .the_gallery .row {
+    padding: 0 15px; }
+  .the_gallery .col-md-4 {
+    padding: 0;
+    text-align: center; }
+    .the_gallery .col-md-4 img {
+      width: 100%; }
+
+footer {
+  background: #333;
+  color: #eee;
+  height: 100%;
+  min-height: 317px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  align-items: center; }
+  footer .copyright {
+    margin-top: 25px;
+    font-size: 14px;
+    color: #ccc; }
+  footer .light {
+    font-family: 'Aleo-Light', sans-serif;
+    color: #ccc; }
+  footer .bold {
+    font-family: 'Aleo-Bold', sans-serif;
+    color: #eee; }
+  footer .footer_flex {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center; }
+  footer .flex-item {
+    line-height: 2em;
+    max-width: 160px;
+    padding-left: 5px;
+    width: 100%; }
+  footer .footer_logo .logoText {
+    color: #fff; }
+  footer .footer_logo a {
+    text-decoration: none; }

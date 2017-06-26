@@ -1,0 +1,42 @@
+@media (max-width: 768px)  {
+
+	div.navbar {
+		display: block;
+		padding-top: 30px;
+	}
+
+
+	div.billboard {
+		height: 370px;
+	}
+	div.billboard_text1 {
+		font-size: 40px !important; 
+	}
+	div.text2_container {
+		margin-top: 30px;
+	}
+
+	div.billboard_text2 {
+		font-size: 12px;
+		padding: 0 15px !important;
+	}
+	.line_before, .line_after {
+		height: 10px !important;
+		max-width: 30px !important;
+	}
+
+	
+	.owl-dots {
+		top: -70px !important;
+	}
+
+	.footer_flex {
+		padding: 50px 0 !important;
+	}
+	.copyright {
+		margin: 0 !important;
+	}
+	.flex-item1, .flex-item2 {
+		margin-bottom: 40px;
+	}
+}
