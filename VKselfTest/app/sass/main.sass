@@ -36,16 +36,45 @@ body
 	overflow-x: hidden
 	opacity: 1
 
-.img-responsive
-	display: block
-	max-width: 100%
-	height: auto
 
-.container-fluid
-	padding: 0
+
+#main
+	.container
+		display: flex
+
+.mmenu-header
+	border-right: 1px solid #f0f2f7
+	width: 62px
+	height: 90px
+	display: flex
 	text-align: center
+	.hamburger
+		margin: auto 0
+		padding: 0
+		padding-left: 10px
 
-.fotorama
-		height: 500px !important
+.hamburger-inner, .hamburger-inner:after, .hamburger-inner:before
+	width: 30px
+	height: 2px
+	border-radius: 0
+	background: #3E4159
+.underline
+	border-top: 1px solid #f0f2f7
+
+.logo
+	margin: auto 30px
+	font-family: 'dScript-b', sans-serif
+	font-size: 25px
+	a
+		text-decoration: none
+		letter-spacing: none
+		color: #3F455F
+// .hamburger--collapse .hamburger-inner:after
+// 	top: 6px
+// .hamburger--collapse .hamburger-inner:before
+// 	top: -6px
+// .hamburger--collapse .hamburger-inner
+// 	bottom: 11px
+
 
 @import "media" // Всегда в конце
