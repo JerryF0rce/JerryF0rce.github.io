@@ -1,0 +1,18 @@
+body {
+	font-size: 25px;
+	font-family: 'Lato', sans-serif;
+	line-height: 1.75;
+	color: #444;
+}
+
+.container {
+	text-align: center;
+	width: 100%;
+}
+#name {
+	margin: auto;
+	border: 1px solid #cecece;
+	background-color: #F8F8F8;
+	max-width: 400px;
+	border-radius: 5px;
+}
