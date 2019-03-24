@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+	<meta charset="utf-8">
+	<!-- <base href="/"> -->
+
+	<title>Cour CRM</title>
+	<meta name="description" content="">
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<!-- Template Basic Images Start -->
+	<meta property="og:image" content="path/to/image.jpg">
+	<!-- Template Basic Images End -->
+	
+	<!-- Custom Browsers Color Start -->
+	<meta name="theme-color" content="#000">
+  <!-- Custom Browsers Color End -->
+  <link rel="stylesheet" href="css/main.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+</head>
+
+<body>
+  <div id="createDay">
+      <i class="fas fa-plus"></i>
+  </div>
+  <article>
+  </article>
+  <template id="workDayTemplate">
+    <div class="workDay">
+      <div class="title">
+        <div class="todayValue" value="350">350</div>
+        <div class="date"></div>
+        <div class="close"><span>x</span></div>
+      </div>
+      <div class="delivery">
+        <div class="customSelect">
+          <div class="selectSelected" value="350">Laptop</div>
+          <div class="selectItems selectHide">
+            <div value="350">Laptop</div>
+            <div value="300">Small</div>
+            <div value="450">2 Laptops</div>
+            <div value="600">Other</div> 
+          </div>
+        </div>
+        <div class="invoiceNum">
+          <input type="text" name="invoice">
+        </div>
+        <div class="mkadOutside">
+          <input type="number" name="mkad">
+        </div>
+        <div class="cost">
+          <input type="number" name="cost" value="350">
+        </div>
+      </div>
+      <div class="addDelivery">
+        <i class="fas fa-plus"></i>
+      </div>
+    </div>
+  </template>
+<script src="js/common.js"></script>
+</body>
+</html>
