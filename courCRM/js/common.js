@@ -2,6 +2,7 @@
   let template = document.getElementById('workDayTemplate'),
       workDay = template.content.querySelector('.workDay'),
       article = document.querySelector('article'),
+      weekSalary = document.getElementById('weekSalary'),
       storageDOM = localStorage.getItem('content');
 
   if(storageDOM) article.innerHTML = storageDOM;
@@ -19,9 +20,10 @@
     if(!tar.closest('.selectSelected')){
       closeAllSelect();
     }
-    //custom slider
+
     setTimeout(() => {
 
+     //custom slider
       if(tar.closest('.selectSelected')){
         closeAllSelect(tar);
         let hideList = tar.nextElementSibling;
@@ -29,28 +31,30 @@
         hideList.classList.toggle('selectHide');
       }
 
-      if(tar.closest('.selectItems')){
-        let selfSelect = tar.parentElement.parentElement.querySelector('.selectSelected'),
-            currentDelevery = tar.closest('.delivery'),
-            listEl = tar.parentElement.children,
-            tarValue = tar.getAttribute('value'),
-            mkad = currentDelevery.querySelector('input[name=mkad]'),
-            cost = currentDelevery.querySelector('input[name=cost]');
+        if(tar.closest('.selectItems')){
+          let selfSelect = tar.parentElement.parentElement.querySelector('.selectSelected'),
+              currentDelevery = tar.closest('.delivery'),
+              listEl = tar.parentElement.children,
+              tarValue = tar.getAttribute('value'),
+              mkad = currentDelevery.querySelector('input[name=mkad]'),
+              cost = currentDelevery.querySelector('input[name=cost]');
 
 
-        for (let i = 0; i < listEl.length; i++) {
-          listEl[i].classList.remove('currentSelect');
+          for (let i = 0; i < listEl.length; i++) {
+            listEl[i].classList.remove('currentSelect');
+          }
+
+          tar.classList.add('currentSelect');
+          selfSelect.innerHTML = tar.innerHTML;
+          selfSelect.setAttribute('value', tarValue);
+          cost.setAttribute('value', calc(tarValue, mkad.value));
+          cost.value = cost.getAttribute('value');
+
+          //calc dayProfit
+          calcProfit(tar);
+          calcSalary()
         }
-
-        tar.classList.add('currentSelect');
-        selfSelect.innerHTML = tar.innerHTML;
-        selfSelect.setAttribute('value', tarValue);
-        cost.setAttribute('value', calc(tarValue, mkad.value));
-        cost.value = cost.getAttribute('value');
-
-        //calc dayProfit
-        calcProfit(tar);
-      }
+      //slider end
 
       function calc(value, distance){
         if(!isNumeric(distance)) distance = 0;
@@ -63,10 +67,14 @@
       let copyWorkDay = workDay.cloneNode(true);
       copyWorkDay.querySelector('.date').innerHTML = getTime();
       article.prepend(copyWorkDay);
+
+      calcSalary();
     }
     if(tar.closest('.close')) {
       let current = tar.closest('.workDay');
       if(confirm('Are you sure?')) current.remove();
+
+      calcSalary();
     }
     if(tar.closest('.addDelivery')){
       let copy = workDay.querySelector('.delivery').cloneNode(true);
@@ -74,6 +82,7 @@
       tar.closest('.addDelivery').before(copy);
 
       calcProfit(tar);
+      calcSalary();
     }
     if(tar.closest('.invoiceNum')){
       tar.addEventListener('input', function(){
@@ -90,6 +99,7 @@
         this.setAttribute('value', this.value);
 
         calcProfit(tar);
+        calcSalary();
       });
 
     }
@@ -101,10 +111,25 @@
         selectSelected.setAttribute('value', this.value);
 
         calcProfit(tar);
+        calcSalary();
       });
     }
 
   });
+
+  function calcSalary(){
+
+    let allDayProfit = document.querySelectorAll('.todayValue'),
+        total = 0;
+        
+    if(allDayProfit){
+      for (let i = 0; i < allDayProfit.length; i++) {
+        total += +allDayProfit[i].innerHTML;
+      }
+      weekSalary.innerHTML = total;
+    }
+
+  }
 
   function calcProfit(currentTar){
     let dayCostEl = currentTar.closest('.workDay').querySelectorAll('input[name=cost]'),
