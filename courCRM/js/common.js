@@ -4,11 +4,16 @@
       article = document.querySelector('article'),
       weekSalary = document.getElementById('weekSalary'),
       storageDOM = localStorage.getItem('content');
+      storageSalary = localStorage.getItem('salary');
 
-  if(storageDOM) article.innerHTML = storageDOM;
+  if (storageDOM) article.innerHTML = storageDOM;
+  if (storageSalary) weekSalary.innerHTML = storageSalary;
   
   let observer = new MutationObserver(function(mutation){
     localStorage.setItem('content', article.innerHTML);
+
+    calcSalary();
+    localStorage.setItem('salary', weekSalary.getAttribute('value'))
   });
 
   observer.observe(article, {childList: true, characterData: true, subtree: true, attributeFilter: ['value']});
@@ -17,21 +22,20 @@
     let tar = e.target;
 
     //close all select boxes in the document, except the current
-    if(!tar.closest('.selectSelected')){
-      closeAllSelect();
+    if (!tar.closest('.selectSelected')){
     }
 
     setTimeout(() => {
 
      //custom slider
-      if(tar.closest('.selectSelected')){
+      if (tar.closest('.selectSelected')){
         closeAllSelect(tar);
         let hideList = tar.nextElementSibling;
         tar.classList.toggle('select-arrow-active');
         hideList.classList.toggle('selectHide');
       }
 
-        if(tar.closest('.selectItems')){
+        if (tar.closest('.selectItems')){
           let selfSelect = tar.parentElement.parentElement.querySelector('.selectSelected'),
               currentDelevery = tar.closest('.delivery'),
               listEl = tar.parentElement.children,
@@ -52,44 +56,38 @@
 
           //calc dayProfit
           calcProfit(tar);
-          calcSalary()
         }
       //slider end
 
       function calc(value, distance){
-        if(!isNumeric(distance)) distance = 0;
+        if (!isNumeric(distance)) distance = 0;
         return distance * 40 + +value;
       }
 
     },);
 
-    if(tar.closest('#createDay')) {
+    if (tar.closest('#createDay')) {
       let copyWorkDay = workDay.cloneNode(true);
       copyWorkDay.querySelector('.date').innerHTML = getTime();
       article.prepend(copyWorkDay);
-
-      calcSalary();
     }
-    if(tar.closest('.close')) {
+    if (tar.closest('.close')) {
       let current = tar.closest('.workDay');
-      if(confirm('Are you sure?')) current.remove();
-
-      calcSalary();
+      if (confirm('Are you sure?')) current.remove();
     }
-    if(tar.closest('.addDelivery')){
+    if (tar.closest('.addDelivery')){
       let copy = workDay.querySelector('.delivery').cloneNode(true);
 
       tar.closest('.addDelivery').before(copy);
 
       calcProfit(tar);
-      calcSalary();
     }
-    if(tar.closest('.invoiceNum')){
+    if (tar.closest('.invoiceNum')) {
       tar.addEventListener('input', function(){
         this.setAttribute('value', this.value)
       })
     }
-    if(tar.closest('.mkadOutside')){
+    if (tar.closest('.mkadOutside')) {
       let selectValue = tar.closest('.delivery').querySelector('.selectSelected').getAttribute('value'),
           cost = tar.closest('.delivery').querySelector('input[name=cost]');
 
@@ -99,11 +97,10 @@
         this.setAttribute('value', this.value);
 
         calcProfit(tar);
-        calcSalary();
       });
 
     }
-    if(tar.closest('.cost')){
+    if (tar.closest('.cost')) {
       let selectSelected = tar.closest('.delivery').querySelector('.selectSelected');
 
       tar.addEventListener('input', function(){
@@ -111,27 +108,27 @@
         selectSelected.setAttribute('value', this.value);
 
         calcProfit(tar);
-        calcSalary();
       });
     }
 
   });
 
-  function calcSalary(){
+  function calcSalary() {
 
     let allDayProfit = document.querySelectorAll('.todayValue'),
         total = 0;
         
-    if(allDayProfit){
+    if (allDayProfit) {
       for (let i = 0; i < allDayProfit.length; i++) {
         total += +allDayProfit[i].innerHTML;
       }
       weekSalary.innerHTML = total;
+      weekSalary.setAttribute('value', weekSalary.innerHTML)
     }
 
   }
 
-  function calcProfit(currentTar){
+  function calcProfit(currentTar) {
     let dayCostEl = currentTar.closest('.workDay').querySelectorAll('input[name=cost]'),
         todayValue = currentTar.closest('.workDay').querySelector('.todayValue'),
         dayProfit = 0;
@@ -154,13 +151,13 @@
     let day = WEEK[DATE.getDay()];
 
     let numDay = DATE.getDate();
-    if(numDay < 10) numDay = '0'+ numDay;
+    if (numDay < 10) numDay = '0'+ numDay;
 
     let month = DATE.getMonth() + 1;
-    if(month < 10) month = '0'+ month;
+    if (month < 10) month = '0'+ month;
 
     let seconds = DATE.getSeconds();
-    if(seconds < 10) seconds = '0'+ seconds;
+    if (seconds < 10) seconds = '0'+ seconds;
     return  day + ' ' + numDay + '.' + month;
     
   };
