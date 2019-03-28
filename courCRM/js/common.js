@@ -23,6 +23,7 @@
 
     //close all select boxes in the document, except the current
     if (!tar.closest('.selectSelected')) {
+      closeAllSelect(tar);
     }
 
     setTimeout(() => {
