@@ -4,7 +4,8 @@
       article = document.querySelector('article'),
       weekSalary = document.getElementById('weekSalary'),
       storageDOM = localStorage.getItem('content');
-      storageSalary = localStorage.getItem('salary');
+      storageSalary = localStorage.getItem('salary'),
+      clearArticleStorage = document.getElementById('clearArticleStorage');
 
   if (storageDOM) article.innerHTML = storageDOM;
   if (storageSalary) weekSalary.innerHTML = storageSalary;
@@ -21,22 +22,30 @@
   document.addEventListener('click', function(e){
     let tar = e.target;
 
+
+    if (tar.closest('#clearArticleStorage')) {
+      if (confirm('Удалить все сохраненные данные?')) {
+        localStorage.removeItem('content');
+        article.innerHTML = '';
+      }
+    }
+
     //close all select boxes in the document, except the current
-    if (!tar.closest('.selectSelected')) {
+    if (!tar.closest('.selectSelected')){
       closeAllSelect(tar);
     }
 
     setTimeout(() => {
 
      //custom slider
-      if (tar.closest('.selectSelected')) {
+      if (tar.closest('.selectSelected')){
         closeAllSelect(tar);
         let hideList = tar.nextElementSibling;
         tar.classList.toggle('select-arrow-active');
         hideList.classList.toggle('selectHide');
       }
 
-        if (tar.closest('.selectItems')) {
+        if (tar.closest('.selectItems')){
           let selfSelect = tar.parentElement.parentElement.querySelector('.selectSelected'),
               currentDelevery = tar.closest('.delivery'),
               listEl = tar.parentElement.children,
@@ -60,7 +69,7 @@
         }
       //slider end
 
-      function calc(value, distance) {
+      function calc(value, distance){
         if (!isNumeric(distance)) distance = 0;
         return distance * 40 + +value;
       }
@@ -92,7 +101,7 @@
       let selectValue = tar.closest('.delivery').querySelector('.selectSelected').getAttribute('value'),
           cost = tar.closest('.delivery').querySelector('input[name=cost]');
 
-      tar.addEventListener('input', function() {
+      tar.addEventListener('input', function(){
         cost.value = this.value * 40 + +selectValue;
         cost.setAttribute('value', cost.value);
         this.setAttribute('value', this.value);
@@ -104,7 +113,7 @@
     if (tar.closest('.cost')) {
       let selectSelected = tar.closest('.delivery').querySelector('.selectSelected');
 
-      tar.addEventListener('input', function() {
+      tar.addEventListener('input', function(){
         this.setAttribute('value', this.value);
         selectSelected.setAttribute('value', this.value);
 
