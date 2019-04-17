@@ -1,0 +1,105 @@
+@import "vars"
+@import "fonts"
+@import "libs"
+
+::placeholder
+	color: #666
+
+::selection
+	background-color: $accent
+	color: #fff
+
+body
+  overflow-y: hidden
+  font-family: 'PT-sans', sans-serif
+  height: 100vh   
+  display: flex
+
+.img-responsive
+	display: block
+	max-width: 100%
+	height: auto
+
+article
+  display: flex
+  align-items: flex-end
+  justify-content: flex-end
+  margin: auto
+  width: 777px
+  height: 594px
+  background: url('../img/bg.png')
+  counter-reset: inc
+
+.person
+  text-align: center
+  color: #000
+  font-size: 18px
+  font-weight: 400
+  border-top-right-radius: 48px
+  border-top-left-radius: 48px
+  margin-right: 1px
+  width: 96px
+  background: rgba(255,255,255,.6)
+  animation: lineY 1.1s ease-in-out
+
+.worker
+  position: relative
+  text-align: center
+  &:after
+    display: flex
+    justify-content: center
+    align-items: center
+    font-size: 14px
+    color: #fff
+    content: counter(inc)
+    counter-increment: inc
+    position: absolute
+    right: 16px
+    top: 46px
+    width: 17px
+    height: 17px
+    border-radius: 50%
+    background: #f00
+    z-index: 1234
+// #e43935
+.person-name
+  line-height: 13px
+
+.person-value
+  font-weight: 700
+
+img
+  display: block
+  margin: auto
+  margin-top: 14px
+
+.person1
+  color: #fff
+  background: rgba(127, 0, 255, 0.53)
+  height: 501px
+
+.person2
+  height: 408px
+
+.person3
+  height: 340px
+
+.person4
+  height: 255px
+
+.person5
+  height: 190px
+
+.person6
+  height: 146px
+
+.person7
+  height: 131px
+  margin-right: 0
+
+@keyframes lineY
+  0%
+    height: 0
+    opacity: 0
+    background: rgba(255,255,255,.6)
+@import "media" // Always at the end
