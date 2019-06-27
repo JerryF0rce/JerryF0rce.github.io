@@ -86,7 +86,11 @@
        if (confirm('Are you sure?')) current.remove();
      }
      if (tar.closest('.removeDelievery')) {
+        //tar.closest('.workDay') ===> <div class="workDay">...</div>
+       const workDay = tar.closest('.workDay'); 
        tar.closest('.delivery').remove();
+       //tar.closest('.workDay') ===> null
+       calcProfit(workDay); //calcProfit(workDay)
      }
      if (tar.closest('.addDelivery')){
        let copy = workDay.querySelector('.delivery').cloneNode(true);
@@ -142,14 +146,15 @@
    }
  
    function calcProfit(currentTar) {
-     let dayCostEl = currentTar.closest('.workDay').querySelectorAll('input[name=cost]'),
+      let dayCostEl = currentTar.closest('.workDay').querySelectorAll('input[name=cost]'),
          todayValue = currentTar.closest('.workDay').querySelector('.todayValue'),
          dayProfit = 0;
- 
-     for (let i = 0; i < dayCostEl.length; i++) {
-       dayProfit += +dayCostEl[i].value;
-     }
-     todayValue.innerHTML = dayProfit;
+   
+      for (let i = 0; i < dayCostEl.length; i++) {
+         dayProfit += +dayCostEl[i].value;
+      }
+      todayValue.innerHTML = dayProfit;
+      todayValue.setAttribute('value', todayValue.innerHTML);
    };
  
    function isNumeric(km) {
